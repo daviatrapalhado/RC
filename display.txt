@@ -1,0 +1,93 @@
+// ## Display LCD 16x2
+
+#include <LiquidCrystal.h>
+
+// inicializa a biblioteca associando qualquer pino de interface LCD necessário
+// com o número do pino do arduino ao qual está conectado
+const int rs = 3, en = 4, d4 = A2, d5 = A3, d6 = A4, d7 = A5;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+
+// CÓDIGO QUE EXECUTA UMA VEZ
+void setup() {
+  
+// configura as comunicações de início
+  Serial.begin(9600);
+  Serial.println("LIGANDO MAQUINA");
+  
+  
+  // ## Display LCD
+  
+
+// configura o número de colunas e linhas do LCD:
+  lcd.begin(16, 2);
+ // Limpa a exibição do LCD.
+  lcd.clear();
+
+// Exibir mensagem inicializando no visor LCD
+  lcd.setCursor(0, 0);
+  lcd.print("COMECANDO");
+  delay (1000);
+  lcd.setCursor(8, 1);
+  lcd.print("CALMA");
+  delay (2000);
+  lcd.clear();
+  
+  
+  Serial.println("Project Display LCD setup");
+  
+  
+// Imprime uma mensagem no LCD.
+  Serial.println("PROJETO");
+  lcd.setCursor(0, 0);
+  lcd.print("PROJETO");
+  delay(1000);
+  Serial.println("FINAL");
+  lcd.setCursor(4, 1);
+  lcd.print("FINAL");
+  delay(2000);
+  lcd.clear();
+  
+  Serial.println("Carregando... ");
+  
+  // Iteração do display LCD inicial movendo as letras em um FOR LOOP
+  for (int i = 0; i <= 15; i++) {
+    lcd.setCursor(0, 0);
+    lcd.print("Carregando...");
+    lcd.setCursor(i, 1);
+    lcd.print("*");
+    delay (200);
+    lcd.clear();
+  	}
+   
+  Serial.println("## SETUP COMPLETED ##");
+}
+
+
+void montaTelaHello() {
+  Serial.println("called montaTelaHello()");
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("SUA HORA ");
+  delay(1000);
+  lcd.setCursor(8, 1);
+  lcd.print("CHEGOU!");
+  delay(1000);
+  
+}
+
+void montaTelaBlank() {
+  Serial.println("called montaTelaClear()");
+  lcd.clear();
+  delay(1000);
+}
+
+
+
+void loop() {
+
+  montaTelaHello();
+  montaTelaBlank();
+
+}
+

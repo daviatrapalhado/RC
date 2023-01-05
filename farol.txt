@@ -1,0 +1,42 @@
+// C++ code
+//
+
+int botao = 0;
+int botao1 = 0;
+int botao2 = 0;
+
+void setup()
+{
+	pinMode(6,INPUT);
+  	pinMode(13,OUTPUT);
+    pinMode(5,INPUT);
+  	pinMode(12,OUTPUT);
+	pinMode(3,INPUT);
+  	pinMode(8,OUTPUT);
+}
+
+void loop()
+{
+	    botao = digitalRead(6);
+  	    if(botao == HIGH){
+  		digitalWrite(13,HIGH);
+      	delay(1000);
+        digitalWrite(13,LOW);
+      	delay(1000);
+  }
+  	    botao1 = digitalRead(5);
+  	    if(botao1 == HIGH){
+  		digitalWrite(12,HIGH);
+      	delay(1000);
+        digitalWrite(12,LOW);
+      	delay(1000);
+  }
+  	    botao2 = digitalRead(3);
+  	    if(botao == HIGH){
+  		digitalWrite(8,HIGH);
+      	delay(1000);
+        digitalWrite(8,LOW);
+      	delay(1000);
+  }
+}
+
